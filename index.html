@@ -17,7 +17,7 @@
       })(window, document, "script", "dataLayer", "GTM-KDJK6QN7");
     </script>
     <!-- End Google Tag Manager -->
-    <title> Pomander | Play free games online</title>
+    <title> Champslevl | Play free games online</title>
     <meta charset="UTF-8" />
     <!-- Meta Tags -->
     <meta charset="UTF-8" />
@@ -28,23 +28,23 @@
     />
     <meta
       name="description"
-      content="Play free games online at Pomander! Explore action-packed adventures, puzzles, and more. Your ultimate destination for fun and challenges!"
+      content="Play free games online at Champslevl! Explore action-packed adventures, puzzles, and more. Your ultimate destination for fun and challenges!"
     />
     <meta
       name="keywords"
-      content=" Pomanders, free online games, action games, puzzle games, PomanderPlace gaming platform"
+      content=" Champslevls, free online games, action games, puzzle games, ChampslevlPlace gaming platform"
     />
-    <meta name="author" content=" Pomander" />
+    <meta name="author" content=" Champslevl" />
 
     <!-- Open Graph Meta Tags -->
-    <meta property="og:site_name" content=" Pomander" />
+    <meta property="og:site_name" content=" Champslevl" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:title" content=" Pomander - Play Free Games Online" />
+    <meta property="og:title" content=" Champslevl - Play Free Games Online" />
     <meta property="og:url" content="https://yourdomain.com/index.html" />
     <meta property="og:type" content="game" />
     <meta
       property="og:description"
-      content="Play free games online at Pomander! Explore action, puzzles, and more in one place. Challenge your skills and enjoy endless fun!"
+      content="Play free games online at Champslevl! Explore action, puzzles, and more in one place. Challenge your skills and enjoy endless fun!"
     />
     <meta
       property="og:image"
@@ -69,36 +69,58 @@
     <link rel="preconnect" href="https://pagead2.googlesyndication.com/" />
     <link rel="preconnect" href="https://googleads.g.doubleclick.net/" />
     <link rel="preconnect" href="https://tpc.googlesyndication.com/" />
-
-    <!-- Preload AdSense script for early loading -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    
-
-    <!-- Load AdSense script -->
+<script src="reward.js"></script>
+    <!-- Load Google Ad Manager (GPT) library -->
     <script
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2402953735246121"
-      data-overlays="bottom"
+      async
+      src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"
       crossorigin="anonymous"
     ></script>
-    <!-- Official adBreak Setup for Rewards -->
-    <script>
-      window.adsbygoogle = window.adsbygoogle || [];
+    <!-- Google Ad Manager interstitial setup -->
 
-      // ✅ Proper global functions
-      window.adBreak = function (o) {
-        adsbygoogle.push(o);
-      };
+     <script>
+  // Google Ad Manager interstitial (replaces AdSense adBreak)
+  window.googletag = window.googletag || { cmd: [] };
+  let interstitialSlot;
 
-      window.adConfig = function (o) {
-        adsbygoogle.push(o);
-      };
+  googletag.cmd.push(function () {
+    interstitialSlot = googletag.defineOutOfPageSlot(
+      '/23353868385/champslevl.com_inter',
+      googletag.enums.OutOfPageFormat.INTERSTITIAL
+    );
 
-      // ✅ Enable preload
-      adConfig({
-        preloadAdBreaks: 'on',
-        sound: 'off'
-      });
-    </script>
+    if (interstitialSlot) {
+      interstitialSlot.addService(googletag.pubads());
+    }
+
+    googletag.pubads().collapseEmptyDivs();
+    googletag.enableServices();
+
+    // Preload the interstitial as soon as the page is ready
+    if (interstitialSlot) {
+      googletag.display(interstitialSlot);
+    }
+  });
+
+  // GAM services are enabled here, so the display ad below skips re-init
+  window.__gamDisplayInit = true;
+
+  function showInterstitialAd(event, url) {
+    // Stop instant redirect
+    if (event) event.preventDefault();
+
+    googletag.cmd.push(function () {
+      if (interstitialSlot) {
+        googletag.pubads().display(interstitialSlot);
+      }
+      // Fast fallback: navigate after the interstitial (max wait 500ms)
+      setTimeout(function () {
+        window.location.href = url;
+      }, 500);
+    });
+  }
+</script>
+   
     <style>
       @media (max-width: 1024px) {
         .container {
@@ -186,30 +208,45 @@
                 <a href="index.html" id="show-all-btn"> Show All Games </a>
               </div>
             </div>
-            <!-- ! Pomander display ads -->
+            <!-- ! Champslevl display ads -->
             <div class="ad-container">
-              <ins
-                class="adsbygoogle"
-                style="display: block"
-                data-ad-client="ca-pub-2402953735246121"
-                data-ad-slot="6507385014"
-                data-ad-format="auto"
-                data-full-width-responsive="true"
-                id="pokiiDisplayAd"
-              ></ins>
+              <div id="gam-display-1" style="min-width:300px;min-height:90px;margin:0 auto;"></div>
               <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
+                window.googletag = window.googletag || { cmd: [] };
+                googletag.cmd.push(function () {
+                  if (!window.__gamDisplayInit) {
+                    window.__gamDisplayInit = true;
+                    googletag.pubads().collapseEmptyDivs();
+                    googletag.enableServices();
+                  }
+                  googletag
+                    .defineSlot(
+                      '/23353868385/champslevl.com_d1',
+                      [ [336, 280], [300, 250], [320, 100], [320, 50]],
+                      'gam-display-1'
+                    )
+                    .defineSizeMapping(
+                      googletag
+                        .sizeMapping()
+                        .addSize([1024, 0], [[970, 250], [970, 90], [728, 90]])
+                        .addSize([768, 0], [[728, 90], [468, 60], [336, 280], [300, 250]])
+                        .addSize([0, 0], [[336, 280], [300, 250], [320, 100], [320, 50]])
+                        .build()
+                    )
+                    .addService(googletag.pubads());
+                  googletag.display('gam-display-1');
+                });
               </script>
               <span class="ad-name">ADVERTISEMENT</span>
             </div>
 
-            <!-- ! Pomander display ads -->
+            <!-- ! Champslevl display ads -->
             <!-- <div class="resp_play_btn">
             <div class="play_btn">
               <div class="play_btn_txt">Redeem rewards to play free games</div>
               <a href="#goto_top"  class="smooth-scroll"
                 aria-label="Lets Play Button">
-                <button class="click_btn btn1">Lets Play 🔥</button>
+                <button class="click_btn btn1">Lets Play ??</button>
               </a>
              </div>
             </div> -->
@@ -229,7 +266,7 @@
                   <span class="ad-tag-earn">Ad</span>
                 </div>
               </div>
-            </div>
+            </div> 
 
             <div class="resp_choose_game">
               <div class="choose_game" style="margin-top: 14px">
@@ -242,8 +279,9 @@
                     <a
                       href="action-game.html"
                       aria-label="Explore Action Games"
+                       onclick="showInterstitialAd(event, 'action-game.html')"
                     >
-                      <button class="click_btn_option click_btn">
+                      <button class="click_btn_option click_btn" >
                         <img
                           src="assets/icons/action-dark.png"
                           class="cat_img"
@@ -255,6 +293,7 @@
                     <a
                       href="casual-game.html"
                       aria-label="Explore Casual Games"
+                       onclick="showInterstitialAd(event, 'casual-game.html')"
                     >
                       <button class="click_btn_option click_btn">
                         <img
@@ -272,6 +311,8 @@
                       <button
                         class="click_btn_option click_btn"
                         style="margin-top: 0px"
+                         onclick="showInterstitialAd(event, 'puzzle-game.html')"
+                       
                       >
                         <img
                           src="assets/icons/puzzle-dark.png"
@@ -284,10 +325,12 @@
                     <a
                       href="arcade-game.html"
                       aria-label="Explore Casual Games"
+                       onclick="showInterstitialAd(event, 'arcade-game.html')"
                     >
                       <button
                         class="click_btn_option click_btn"
                         style="margin-top: 0px"
+                       
                       >
                         <img
                           src="assets/icons/arcade-dark.png"
@@ -308,6 +351,7 @@
                   <a
                     href="/game.html?name=cricket-premier-league"
                     class="game_section3"
+                     onclick="showInterstitialAd(event, '/game.html?name=cricket-premier-league')"
                   >
                     <div class="game_section4">
                       <picture>
@@ -348,6 +392,7 @@
                   <a
                     href="/game.html?name=feed-the-frog"
                     class="game_section3"
+                    onclick="showInterstitialAd(event, '/game.html?name=feed-the-frog')"
                   >
                     <div class="game_section4">
                       <picture>
@@ -388,6 +433,7 @@
                   <a
                     href="/game.html?name=fill-water-tank"
                     class="game_section3"
+                    onclick="showInterstitialAd(event, '/game.html?name=fill-water-tank')"
                   >
                     <div class="game_section4">
                       <picture>
@@ -428,6 +474,7 @@
                   <a
                     href="/game.html?name=ludo-royal"
                     class="game_section3"
+                    onclick="showInterstitialAd(event, '/game.html?name=ludo-royal')"
                   >
                     <div class="game_section4">
                       <picture>
@@ -468,6 +515,7 @@
                   <a
                     href="/game.html?name=snake.go"
                     class="game_section3"
+                    onclick="showInterstitialAd(event, '/game.html?name=snakego')"
                   >
                     <div class="game_section4">
                       <picture>
@@ -519,6 +567,7 @@
                   <a
                     href="/game.html?name=water-color-sort"
                     class="game_section3"
+                    onclick="showInterstitialAd(event, '/game.html?name=water-color-sort')"
                   >
                     <div class="game_section4">
                       <picture>
@@ -559,6 +608,7 @@
                   <a
                     href="/game.html?name=dress-up-diva"
                     class="game_section3"
+                    onclick="showInterstitialAd(event, '/game.html?name=dress-up-diva')"
                   >
                     <div class="game_section4">
                       <picture>
@@ -599,6 +649,7 @@
                   <a
                     href="/game.html?name=speed-boat"
                     class="game_section3"
+                    onclick="showInterstitialAd(event, '/game.html?name=speed-boat')"
                   >
                     <div class="game_section4">
                       <picture>
@@ -631,7 +682,7 @@
                         <img src="assets/icons/coin.png" alt="" />
                         10
                       </div>
-                      <button type="button" class="play-btn">Play Game</button>
+                      <button type="button" class="play-btn" >Play Game</button>
                     </div>
                   </a>
                 </div>
@@ -639,6 +690,7 @@
                   <a
                     href="/game.html?name=goalkeeper"
                     class="game_section3"
+                    onclick="showInterstitialAd(event, '/game.html?name=goalkeeper')"
                   >
                     <div class="game_section4">
                       <picture>
@@ -679,6 +731,7 @@
                   <a
                     href="/game.html?name=love-couple-puzzle"
                     class="game_section3"
+                    onclick="showInterstitialAd(event, '/game.html?name=love-couple-puzzle')"
                   >
                     <div class="game_section4">
                       <picture>
@@ -720,7 +773,8 @@
                 <div class="more_game">
                   <a
                     href="./home.html"
-                    aria-label="PomanderPlace Main Site"
+                    aria-label=" Champslevl Main Site"
+                    onclick="showInterstitialAd(event, './home.html')"
                   >
                     <button type="button" class="click_btn1">More Games</button>
                   </a>
@@ -729,10 +783,10 @@
             </div>
             <div class="resp_about_section">
               <div class="about_section">
-                <h1>About Pomander</h1>
+                <h1>About Champslevl</h1>
                 <br />
                 <p>
-                  Play free games online at Pomander and enjoy endless fun!
+                  Play free games online at Champslevl and enjoy endless fun!
                   Choose from a variety of genres, including puzzle games, card
                   games, adventure games, sports games, racing games, and car
                   games.
@@ -758,7 +812,7 @@
                   >Privacy Policy</a
                 >
                 <a href="./home.html" class="privacytext anchor_text"
-                  >Pomnaderplace.com</a
+                  >Champslevl.com</a
                 >
               </footer>
             </section>
@@ -786,7 +840,7 @@
     <!-- Congrats Popup -->
     <!-- <div id="congratsPopup" class="popup" style="display: none">
       <div class="popup-data">
-        <span class="close-icon" onclick="handleCongratsOk()">✖</span>
+        <span class="close-icon" onclick="handleCongratsOk()">?</span>
 
         <h2 class="congrats-heading">Congratulations!</h2>
         <p>You have won</p>
@@ -936,79 +990,76 @@
         setTimeout(() => toast.remove(), 3000);
       }
 
-      // Official RewardAd (user provided)
-      function RewardAd() {
-        if (typeof adBreak !== 'function') {
-          showToast({ title: 'No Ad', msg: 'Try later' });
-          return;
-        }
+      // GAM Rewarded ad (replaces AdSense adBreak reward)
+     window.googletag = window.googletag || { cmd: [] };
 
-        adBreak({
-          type: 'reward',
-          name: 'reward_coin',
+let rewardedSlot = null;
+let rewardGranted = false;
 
-          beforeReward: function(showAdFn) {
-            showAdFn();
-          },
+googletag.cmd.push(function () {
+  rewardedSlot = googletag.defineOutOfPageSlot(
+    "/23353868385/champslevl.com_reward",
+    googletag.enums.OutOfPageFormat.REWARDED
+  );
 
-          adViewed: function() {
-            console.log('Ad viewed');
-          },
+  if (!rewardedSlot) {
+    console.log("Rewarded ads not supported.");
+    return;
+  }
 
-          adDismissed: function() {
-            showToast({ title: 'Dismissed', msg: '🚫 No reward given' });
-          },
+  rewardedSlot.addService(googletag.pubads());
 
-          adBreakDone: function(placementInfo) {
-            console.log('breakStatus:', placementInfo.breakStatus);
+  googletag.pubads().addEventListener("rewardedSlotReady", function (event) {
+    console.log("Rewarded Ready");
+    event.makeRewardedVisible();
+  });
 
-            if (placementInfo.breakStatus === 'viewed') {
-              addCoins(100);
-showToast({ title: 'Congratulations!', msg: '🥳 +100 coins added!' });
-            //  if(typeof window.onAdSuccess === 'function') window.onAdSuccess();
-            } else {
-              showToast({ title: 'No Ad Available', msg: 'Try again later' });
-            }
-          }
-        });
-      }
+  googletag.pubads().addEventListener("rewardedSlotGranted", function () {
+    console.log("Reward Granted");
+    addCoins(100);
+    showToast({
+      title: "Congratulations!",
+      msg: "+100 coins added!"
+    });
+    rewardGranted = true;
+  });
 
-      // Direct on Earn button
-      document.addEventListener('DOMContentLoaded', function() {
-        const earnBtn = document.getElementById('earnCoinBtn');
-        if (earnBtn) earnBtn.onclick = RewardAd;
-        document.getElementById('coin').textContent = getCoins();
+  googletag.pubads().addEventListener("rewardedSlotClosed", function () {
+    console.log("Rewarded Closed");
+
+    if (!rewardGranted) {
+      showToast({
+        title: "Dismissed",
+        msg: "No reward given"
       });
+    }
+
+    rewardGranted = false;
+  });
+
+  googletag.enableServices();
+});
+
+function RewardAd() {
+  if (!rewardedSlot) {
+    showToast({
+      title: "No Ad Available",
+      msg: "Rewarded ads not supported."
+    });
+    return;
+  }
+
+  console.log("Loading Reward Ad...");
+
+  googletag.cmd.push(function () {
+    googletag.display(rewardedSlot);
+  });
+}
+
+document.getElementById("earnCoinBtn").addEventListener("click", RewardAd);
     </script>
 
-    <!-- Prevent interstitial - AdSense overlay blocker -->
-    <script>
-      // Block unwanted overlays/interstitials
-      setTimeout(() => {
-        const overlays = document.querySelectorAll('[data-overlays]');
-        overlays.forEach(el => el.removeAttribute('data-overlays'));
-        
-        // Hide interstitial modals
-        const interstitials = document.querySelectorAll('.adsbygoogle[data-ad-status="filled"]');
-        interstitials.forEach(el => {
-          if (el.style.display === 'block' && el.offsetHeight > window.innerHeight * 0.8) {
-            el.style.display = 'none';
-          }
-        });
-      }, 1000);
 
-      // CSS override for AdSense interstitial
-      const style = document.createElement('style');
-      style.textContent = `
-        ins.adsbygoogle[data-ad-status="filled"] {
-          z-index: 999 !important;
-        }
-        .google-auto-placed {
-          display: none !important;
-        }
-      `;
-      document.head.appendChild(style);
-    </script>
 
     <script src="js/redeemcoin1.js" crossorigin="anonymous"></script>
 

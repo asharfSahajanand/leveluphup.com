@@ -46,7 +46,7 @@
                   .concat(null == u ? void 0 : u.main, " Game | Play ")
                   .concat(
                     null == u ? void 0 : u.tag[0],
-                    " Game Online | Pomander",
+                    " Game Online | Champslevl",
                   ),
               );
               document.title = e;
@@ -182,26 +182,46 @@
       "use strict";
       var a = r(7437),
         s = r(2265);
-      t.Z = () => (
+      t.Z = () => {
+        var n = (0, s.useRef)(null);
+        if (!n.current) {
+          n.current = "gam-display-" + Math.random().toString(36).slice(2);
+        }
         (0, s.useEffect)(() => {
+          var id = n.current;
           try {
-            window.adsbygoogle && window.adsbygoogle.push({});
+            window.googletag = window.googletag || { cmd: [] };
+            window.googletag.cmd.push(function () {
+              if (!window.__gamDisplayInit) {
+                window.__gamDisplayInit = true;
+                googletag.pubads().collapseEmptyDivs();
+                googletag.enableServices();
+              }
+              googletag
+                .defineSlot("/23353868385/champslevl.com_d1", [[970, 250], [970, 90], [728, 90], [468, 60], [336, 280], [300, 250], [320, 100], [320, 50]], id)
+                .defineSizeMapping(
+                  googletag
+                    .sizeMapping()
+                    .addSize([1024, 0], [[970, 250], [970, 90], [728, 90]])
+                    .addSize([768, 0], [[728, 90], [468, 60], [336, 280], [300, 250]])
+                    .addSize([0, 0], [[336, 280], [300, 250], [320, 100], [320, 50]])
+                    .build()
+                )
+                .addService(googletag.pubads());
+              googletag.display(id);
+            });
           } catch (e) {
-            console.error("AdSense error:", e);
+            console.error("GAM error:", e);
           }
-        }, []),
-        (0, a.jsx)("div", {
+        }, []);
+        return (0, a.jsx)("div", {
           style: { textAlign: "center" },
-          children: (0, a.jsx)("ins", {
-            className: "adsbygoogle",
-            style: { display: "block" },
-            "data-ad-client": "ca-pub-2402953735246121",
-            "data-ad-slot": "3503714080",
-            "data-ad-format": "auto",
-            "data-full-width-responsive": "true",
+          children: (0, a.jsx)("div", {
+            id: n.current,
+            style: { minWidth: "300px", minHeight: "90px", margin: "0 auto" },
           }),
-        })
-      );
+        });
+      };
     },
     102: function (e, t, r) {
       "use strict";

@@ -22,26 +22,26 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <title> Pomander | Play free games online</title>
+    <title> Champslevl | Play free games online</title>
 
     <!-- Styles and Icons -->
     <link rel="stylesheet" href="style.html" />
     <link rel="icon" href="favicon.ico" sizes="16x16 32x32 180x180" />
 
     <!-- Meta Tags -->
-    <meta property="og:title" content=" Pomander" />
+    <meta property="og:title" content=" Champslevl" />
     <meta property="og:url" content="index.html" />
     <meta property="og:type" content="game" />
     <meta
       property="og:description"
-      content="Your ultimate gaming destination! Dive into thrilling games on Pomander today!"
+      content="Your ultimate gaming destination! Dive into thrilling games on Champslevl today!"
     />
     <meta property="og:image" content="./images/icon/share_image.png" />
     <meta
       name="keywords"
-      content=" Pomanders, free online games, action games, puzzle games"
+      content=" Champslevls, free online games, action games, puzzle games"
     />
-    <meta name="author" content=" Pomander" />
+    <meta name="author" content=" Champslevl" />
     <link rel="stylesheet" href="css/style.css" />
 
     <link
@@ -57,16 +57,8 @@
     <link rel="preconnect" href="https://googleads.g.doubleclick.net/" />
     <link rel="preconnect" href="https://tpc.googlesyndication.com/" />
 
-    <!-- Preload AdSense script for early loading -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    
-
-    <!-- Load AdSense script -->
-    <script
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2402953735246121"
-      data-overlays="bottom"
-      crossorigin="anonymous"
-    ></script>
+    <!-- Load Google Ad Manager (GPT) library -->
+    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -143,23 +135,30 @@
               }
             </style>
 
-            <!-- ! Pomander display ads -->
+            <!-- ! Champslevl display ads -->
             <div class="ad-container">
-              <ins
-                class="adsbygoogle"
-                style="display: block;"
-                data-ad-client="ca-pub-2402953735246121"
-                data-ad-slot="6507385014"
-                data-ad-format="auto"
-                data-full-width-responsive="true"
-                id="pokiiDisplayAd"
-              ></ins>
+              <div id="gam-display-1" style="min-width:300px;min-height:90px;margin:0 auto;"></div>
               <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
+                window.googletag = window.googletag || { cmd: [] };
+                googletag.cmd.push(function () {
+                  if (!window.__gamDisplayInit) {
+                    window.__gamDisplayInit = true;
+                    googletag.pubads().collapseEmptyDivs();
+                    googletag.enableServices();
+                  }
+                  googletag
+                    .defineSlot('/23353868385/champslevl.com_d1', [[336, 280], [300, 250], [320, 100], [320, 50]], 'gam-display-1')
+                    .defineSizeMapping(
+                      googletag.sizeMapping()
+                        .addSize([0, 0], [[336, 280], [300, 250], [320, 100], [320, 50]])
+                        .build()                    )
+                    .addService(googletag.pubads());
+                  googletag.display('gam-display-1');
+                });
               </script>
               <span class="ad-name">ADVERTISEMENT</span>
             </div>
-            <!-- ! Pomander display ads -->
+            <!-- ! Champslevl display ads -->
 
             <div class="game_section" style="height: auto; margin-top: 8px">
               <div class="game_section1" id="gameList">
@@ -320,7 +319,7 @@
                 <div class="more_game">
                   <a
                     href="./home.html"
-                    aria-label="PomanderPlace Main Site"
+                    aria-label=" Champslevl Main Site"
                   >
                     <button type="button" class="click_btn click_btn1">
                       More Games
@@ -331,10 +330,10 @@
             </div>
             <div class="resp_about_section">
               <div class="about_section">
-                <h1>About Pomander</h1>
+                <h1>About Champslevl</h1>
                 <br />
                 <p>
-                  Play free games online at Pomander and enjoy endless fun!
+                  Play free games online at Champslevl and enjoy endless fun!
                   Choose from a variety of genres, including puzzle games, card
                   games, adventure games, sports games, racing games, and car
                   games.
@@ -360,7 +359,7 @@
                   >Privacy Policy</a
                 >
                 <a href="./home.html" class="privacytext anchor_text"
-                  >pomanderplace.com</a
+                  > champslevl.com</a
                 >
               </footer>
             </section>
@@ -399,40 +398,63 @@
         setTimeout(() => toast.remove(), 3000);
       }
 
-      // Official RewardAd (user provided)
-      function RewardAd() {
-        if (typeof adBreak !== 'function') {
-          showToast({ title: 'No Ad', msg: 'Try later' });
-          return;
+      // GAM Rewarded ad (replaces AdSense adBreak reward)
+      window.googletag = window.googletag || { cmd: [] };
+      var rewardedSlot = null;
+      var rewardGranted = false;
+      var rewardRequested = false;
+
+      googletag.cmd.push(function () {
+        rewardedSlot = googletag.defineOutOfPageSlot(
+          '/23353868385/champslevl.com_reward',
+          googletag.enums.OutOfPageFormat.REWARDED
+        );
+
+        if (rewardedSlot) {
+          rewardedSlot.addService(googletag.pubads());
+
+          googletag.pubads().addEventListener('rewardedSlotReady', function (e) {
+            if (rewardRequested) {
+              rewardRequested = false;
+              e.makeRewardedVisible();
+            }
+          });
+
+          googletag.pubads().addEventListener('rewardedSlotGranted', function () {
+            rewardGranted = true;
+            addCoins(100);
+            showToast({ title: 'Congratulations!', msg: '+100 coins added!' });
+          });
+
+          googletag.pubads().addEventListener('rewardedSlotClosed', function () {
+            if (!rewardGranted) {
+              showToast({ title: 'Dismissed', msg: 'No reward given' });
+            }
+            rewardGranted = false;
+          });
         }
 
-        adBreak({
-          type: 'reward',
-          name: 'reward_coin',
+        if (!window.__gamDisplayInit) {
+          window.__gamDisplayInit = true;
+          googletag.pubads().collapseEmptyDivs();
+        }
+        googletag.enableServices();
 
-          beforeReward: function(showAdFn) {
-            showAdFn();
-          },
+        // Preload the rewarded ad (stays hidden until the user opts in)
+        if (rewardedSlot) {
+          googletag.display(rewardedSlot);
+        }
+      });
 
-          adViewed: function() {
-            console.log('Ad viewed');
-          },
-
-          adDismissed: function() {
-            showToast({ title: 'Dismissed', msg: '🚫 No reward given' });
-          },
-
-          adBreakDone: function(placementInfo) {
-            console.log('breakStatus:', placementInfo.breakStatus);
-
-            if (placementInfo.breakStatus === 'viewed') {
-              addCoins(100);
-showToast({ title: 'Congratulations!', msg: '🥳 +100 coins added!' });
-            //  if(typeof window.onAdSuccess === 'function') window.onAdSuccess();
-            } else {
-              showToast({ title: 'No Ad Available', msg: 'Try again later' });
-            }
-          }
+      function RewardAd() {
+        if (!rewardedSlot) {
+          showToast({ title: 'No Ad Available', msg: 'Try again later' });
+          return;
+        }
+        rewardGranted = false;
+        rewardRequested = true;
+        googletag.cmd.push(function () {
+          googletag.pubads().refresh([rewardedSlot]);
         });
       }
 
