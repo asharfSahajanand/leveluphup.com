@@ -46,7 +46,7 @@
                   .concat(null == u ? void 0 : u.main, " Game | Play ")
                   .concat(
                     null == u ? void 0 : u.tag[0],
-                    " Game Online | playbonusnow.com",
+                    " Game Online | gamesparkl.com",
                   ),
               );
               document.title = e;
@@ -198,7 +198,7 @@
                 googletag.enableServices();
               }
               googletag
-                .defineSlot("/23353868385/playbonusnow.com_d1", [[970, 250], [970, 90], [728, 90], [468, 60], [336, 280], [300, 250], [320, 100], [320, 50]], id)
+                .defineSlot("/23353868385/gamesparkl.com_d1", [[970, 250], [970, 90], [728, 90], [468, 60], [336, 280], [300, 250], [320, 100], [320, 50]], id)
                 .defineSizeMapping(
                   googletag
                     .sizeMapping()
