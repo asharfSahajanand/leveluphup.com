@@ -22,7 +22,7 @@
   var UTM_HIT_COUNT_KEY    = 'utmRewardHitCount';
 
   // -- Hardcoded reward ad unit -------------------------------------
-  var REWARD_AD_UNIT = '/23353868385/gamtreasure.com_reward';
+  var REWARD_AD_UNIT = '/23353868385/leveluphup.com_reward';
 
   // -- Debug helper ----------------------------------------------
   function dbg(msg, data, color) {
