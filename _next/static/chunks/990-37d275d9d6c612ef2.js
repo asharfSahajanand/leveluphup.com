@@ -39,7 +39,7 @@
                   a = encodeURIComponent(
                     "Hello, I would like to get in touch.",
                   ),
-                  t = "help. champslevl@gmail.com",
+                  t = "help. leveluphup@gmail.com",
                   r = "https://mail.google.com/mail/?view=cm&fs=1&to="
                     .concat(t, "&su=")
                     .concat(e, "&body=")
